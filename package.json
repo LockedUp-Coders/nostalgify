@@ -1,0 +1,70 @@
+{
+  "name": "ts-template",
+  "version": "1.0.0",
+  "description": "sample typescript template",
+  "main": "dist/server.js",
+  "scripts": {
+    "lint": "eslint ./src/**/*.ts --fix",
+    "build": "tsc",
+    "server": "nodemon",
+    "start": "node ./dist/server.js",
+    "test": "./node_modules/mocha/bin/mocha --sort --require ts-node/register --timeout 1000 --exit ./test/*.ts",
+    "coverage": "nyc --reporter=lcov ./node_modules/mocha/bin/mocha --sort --require ts-node/register --timeout 1000 --exit ./test/*.ts",
+    "codecov": "codecov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YashKumarVerma/typescript-template.git"
+  },
+  "keywords": [],
+  "author": "YashKumarVerma",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YashKumarVerma/typescript-template/issues"
+  },
+  "homepage": "https://github.com/YashKumarVerma/typescript-template#readme",
+  "devDependencies": {
+    "@types/body-parser": "^1.19.0",
+    "@types/bson": "^4.0.2",
+    "@types/chai": "^4.2.11",
+    "@types/cors": "^2.8.6",
+    "@types/express": "^4.17.6",
+    "@types/jsonwebtoken": "^8.3.9",
+    "@types/mocha": "^7.0.2",
+    "@types/mongodb": "^3.5.14",
+    "@types/node": "^13.11.1",
+    "@types/node-fetch": "^2.5.7",
+    "@types/validator": "^13.0.0",
+    "@types/winston": "^2.4.4",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "codecov": "^3.7.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-prettier": "^3.1.3",
+    "lcov-parse": "^1.0.0",
+    "mocha": "^7.1.2",
+    "node-fetch": "^2.6.0",
+    "nodemon": "^2.0.3",
+    "nyc": "^15.0.1",
+    "prettier": "^2.0.4"
+  },
+  "dependencies": {
+    "typescript": "^3.8.3",
+    "body-parser": "^1.19.0",
+    "bson": "^4.0.4",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsdoc": "^3.6.4",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.5.7",
+    "ts-node": "^8.8.2",
+    "validator": "^13.0.0",
+    "winston": "^3.2.1"
+  }
+}

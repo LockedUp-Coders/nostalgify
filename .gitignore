@@ -1,0 +1,35 @@
+# API keys and secrets
+.env
+
+# logs
+*.log
+
+# Dependency directory
+node_modules
+
+# Editors
+.vscode
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Ignore built ts files
+dist/**/*
+
+# now deploy files
+.now
+
+# app generated logs
+*.log
+
+# azure specific files
+deployent
+
+# test results
+.nyc_output
+coverage.lcov
+nohup.out
+out.txt
+*.info
+coverage
