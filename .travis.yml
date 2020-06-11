@@ -1,7 +1,6 @@
 language: node_js
 
 services:
-  - docker
   - mongodb
 
 node_js:
@@ -17,8 +16,5 @@ script:
   - npm run codecov
 
 after_success:
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker build -t yashkumarverma/typescript-template .
-  - docker push yashkumarverma/typescript-template
   - npm i -g surge
   - surge --project ./coverage/lcov-report --domain ykv-template-cov.surge.sh
