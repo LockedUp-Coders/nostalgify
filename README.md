@@ -1,4 +1,4 @@
-## TypeScript Starter Template
+## Nostalgify
 
 [![Build Status](https://travis-ci.com/YashKumarVerma/typescript-template.svg?branch=master)](https://travis-ci.com/YashKumarVerma/typescript-template)
 [![codecov](https://codecov.io/gh/YashKumarVerma/typescript-template/branch/master/graph/badge.svg)](https://codecov.io/gh/YashKumarVerma/typescript-template)
