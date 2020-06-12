@@ -1,14 +1,14 @@
 ## TypeScript Starter Template
 
 [![Build Status](https://github.com/LockedUp-Coders/nostalgify.git)](https://travis-ci.com/YashKumarVerma/typescript-template)
-[![codecov](https://github.com/LockedUp-Coders/nostalgify.git)](https://codecov.io/gh/YashKumarVerma/typescript-template)
-![GitHub](https://github.com/LockedUp-Coders/nostalgify.gite)
+[![codecov](https://codecov.io/gh/YashKumarVerma/typescript-template/branch/master/graph/badge.svg)](https://github.com/LockedUp-Coders/nostalgify.git)
+![GitHub](https://github.com/LockedUp-Coders/nostalgify.git)
 ![GitHub top language](https://github.com/LockedUp-Coders/nostalgify.git)
 ![Dependencies](https://github.com/LockedUp-Coders/nostalgify.git)
 ![GitHub last commit](https://github.com/LockedUp-Coders/nostalgify.git)
 ![GitHub repo size](https://github.com/LockedUp-Coders/nostalgify.git)
-[![Docker Image Size (tag)](https://github.com/LockedUp-Coders/nostalgify.git)](https://github.com/LockedUp-Coders/nostalgify.git)
-[![Docker Automated build](https://github.com/LockedUp-Coders/nostalgify.git)](https://github.com/LockedUp-Coders/nostalgify.git)
+[![Docker Image Size (tag)](https://img.shields.io/docker/image-size/yashkumarverma/typescript-template/latest)](https://github.com/LockedUp-Coders/nostalgify.git)
+[![Docker Automated build](https://img.shields.io/docker/automated/yashkumarverma/typescript-template)](https://github.com/LockedUp-Coders/nostalgify.git)
 
 A handy boiler plate to set up the following with respective integrations
 
