@@ -17,4 +17,4 @@ script:
 
 after_success:
   - npm i -g surge
-  - surge --project ./coverage/lcov-report --domain ykv-template-cov.surge.sh
+  - surge --project ./coverage/lcov-report --domain ykv-nostalgify-cov.surge.sh
