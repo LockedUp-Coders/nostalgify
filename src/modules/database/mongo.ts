@@ -7,12 +7,12 @@ const connectionString: string =
 
 // eslint-disable-next-line
 let mongodb: any
-let dbName:string = "nostalgify"
+const dbName:string = "nostalgify"
 
 function connect(callback: any) {
   mongodb = mongoose.connect(connectionString + dbName,
               { useNewUrlParser: true, useUnifiedTopology: true}, 
-              function(error) {
+              function errorLogger() {
                 logger.error('Error Connecting to database');
                 return null;
               });
