@@ -8,6 +8,7 @@ import passport from 'passport'
 
 import session from 'express-session'
 
+import database from './modules/database/connect'
 /**
  * Importing all modules to application
  */
@@ -31,6 +32,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(session(sessionConfigurations))
 app.use(passport.initialize())
 app.use(passport.session())
+database.connect()
 
 /**
  * Attach all modules here
