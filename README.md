@@ -10,8 +10,14 @@
 
 ## Running it locally
 
-```dotnetcli
-Install the application: *npm install*
-Run the server: *npm run server*
-Run the tests: *npm run test*
-```
+Install the packages using
+`npm install`
+
+Run the server:
+`npm run server`
+
+Run the linting checks:
+`npm run lint`
+
+Run the tests:
+`npm run test`
