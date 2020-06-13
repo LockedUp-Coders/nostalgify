@@ -3,42 +3,42 @@ import express from 'express'
 import bodyParser from 'body-parser'
 
 import cors from 'cors'
-import logger from './modules/logger/winston'
 
-import authMiddleWare from './modules/auth/middleware'
+import passport from 'passport'
 
-import { connect } from './modules/database/mongo'
-import Seed from './modules/database/validator'
+import session from 'express-session'
 
-// loading routes
-import userRoutes from './modules/user/routes'
+/**
+ * Importing all modules to application
+ */
+import userModule from './modules/user/routes'
 
+/** Load environment variable simulations */
 require('dotenv').config()
 
-// seed collections with validations
-connect(async () => {
-  logger.info('Database Connected')
-  await Seed()
-})
+/** Defining configurations */
+const sessionConfigurations = {
+  secret: process.env.secret || 'somethingVerySecret',
+  resave: true,
+  saveUninitialized: true,
+  cookie: { maxAge: 86400000, secure: false, httpOnly: false },
+}
 
-// create instance of express
 const app = express()
-
-// parse valid requests only
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  }),
-)
-app.use(bodyParser.json())
 app.use(cors())
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(session(sessionConfigurations))
+app.use(passport.initialize())
+app.use(passport.session())
 
-// user interaction allowed without token headers
-app.get('/', (req, res) => res.json({ error: false }))
-app.use('/user', userRoutes)
+/**
+ * Attach all modules here
+ */
+app.use('/user', userModule)
 
-// all routes next to this will require authentication
-app.use('/', authMiddleWare)
+/** Handle 404  */
+app.get('*', (req, res) => res.send('404'))
 
 // pass instance
 export default app
