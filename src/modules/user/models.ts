@@ -26,6 +26,10 @@ class UserModel {
     return new Promise((resolve, reject) => {
       /** if something goes wrong, send data with reject({ .... }) */
       /**   if everything is alright, send data with resolve */
+      if (username === undefined) {
+        reject({ error: true })
+      }
+
       logger.info(`Loading details about user ${username}`)
       resolve({ firstname: 'yash', lastname: 'verma', username, password: 'not so easy', teams: ['disddn', 'vitvellore'] })
     })
