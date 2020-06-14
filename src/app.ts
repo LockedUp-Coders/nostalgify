@@ -32,6 +32,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(session(sessionConfigurations))
 app.use(passport.initialize())
 app.use(passport.session())
+app.set('view engine', 'ejs');
 database.connect()
 
 /**
