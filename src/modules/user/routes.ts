@@ -24,5 +24,10 @@ router.get('/profile', Controller.showProfile)
  */
 router.post('/profile', Controller.updateProfile)
 
+/**
+ * @description This is how we register a user to our system
+ */
+router.post('/register', Controller.registerUser)
+
 /** Export router to be included into main application */
 export default router

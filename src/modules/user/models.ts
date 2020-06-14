@@ -4,8 +4,10 @@
  * actual place where the data processing happens.
  */
 
+import bcrypt from 'bcrypt'
 import { UserDetails } from './interfaces'
 import logger from '../logger/winston'
+import User from './schema'
 
 /**
  * @class
@@ -32,6 +34,39 @@ class UserModel {
 
       logger.info(`Loading details about user ${username}`)
       resolve({ firstname: 'yash', lastname: 'verma', username, password: 'not so easy', teams: ['disddn', 'vitvellore'] })
+    })
+  }
+
+
+  /**
+   * @static
+   * @description Registers a user
+   * @param userObject user object containing the details of new user
+   * @returns UserDetails
+   */
+  static async registerUser(user: UserDetails): Promise<UserDetails> {
+    return new Promise((resolve, reject) => {
+      /** if something goes wrong, send data with reject({ .... }) */
+      /**   if everything is alright, send data with resolve */
+      
+      if( !user || !user.username || !user.firstname || !user.password )
+      {
+        reject("User Details Invalid")
+      }
+
+      // Hashing the password
+      const saltRounds = 10;
+      user.password = bcrypt.hashSync(user.password, saltRounds);
+
+      const newuser = new User(user)
+      newuser.save()
+      .then(() => {
+        logger.info(`Registered new user ${user.username}`)
+        resolve(user)
+      })
+      .catch(err =>{
+        reject(err)
+      })
     })
   }
 }
