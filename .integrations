@@ -1,0 +1,10 @@
+# This file contains the list of frontend pages ready to be integrated. You need to submit the file to LockedUp-Coders/user-interface
+# repository, but to close the issue open in LockedUp-Coders/nostalgify repository, do the changes to this file by adding
+# the details in the following format.
+
+---
+Issue: IssueLink (made to https://github.com/LockedUp-Coders/nostalgify repository, i.e. link of the child issue you created)
+PullRequest: PullRequestLink (made to https://github.com/LockedUp-Coders/user-interface repository)
+ComponentName: Login Page, SignUp Page etc.
+GithubUsername: yashkumarverma
+---
