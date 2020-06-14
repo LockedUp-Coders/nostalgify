@@ -2,6 +2,10 @@ import express from 'express'
 
 import Controller from './controllers'
 
+import passport from 'passport'
+
+import bcrypt from 'bcryptjs'
+
 /** Create a new router instance */
 const router = express.Router()
 
@@ -25,4 +29,24 @@ router.get('/profile', Controller.showProfile)
 router.post('/profile', Controller.updateProfile)
 
 /** Export router to be included into main application */
+
+ //Login handle
+
+router.get('/login',  (req, res) => {
+    res.render('login.ejs')
+  })
+
+ router.post('/login',(req,res,next)=>{
+    passport.authenticate('local',{
+        successRedirect:'/userprofile',
+        failureRedirect:'/login'
+       })(req,res,next);
+   })
+  
+   //Logout handle
+  router.get('/logout',(req,res)=>{
+    req.logout();
+    res.redirect('/login');
+  })
+  
 export default router
