@@ -16,5 +16,6 @@ script:
   - npm run codecov
 
 after_success:
-  - npm i -g surge
-  - surge --project ./coverage/lcov-report --domain ykv-nostalgify-cov.surge.sh
+  - echo "DONE !"
+#   - npm i -g surge
+#   - surge --project ./coverage/lcov-report --domain ykv-nostalgify-cov.surge.sh

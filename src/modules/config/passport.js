@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 // Load User model
 const User = require('../user/schema.ts');
 
-module.exports = function(passport) {
+var auth = function(passport) {
   passport.use(
     new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
       // Match user
@@ -38,3 +38,5 @@ module.exports = function(passport) {
     });
   });
 };
+
+export default auth

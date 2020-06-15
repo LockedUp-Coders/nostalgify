@@ -32,12 +32,16 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(session(sessionConfigurations))
 app.use(passport.initialize())
 app.use(passport.session())
+app.set('view engine', 'ejs');
 database.connect()
 
 /**
  * Attach all modules here
  */
 app.use('/user', userModule)
+
+// temporary - To be deleted in future. Just for demo purpose.
+app.get('/welcome', (req,res)=> res.render('home',{name:"user123"}));
 
 /** Handle 404  */
 app.get('*', (req, res) => res.send('404'))
