@@ -4,19 +4,19 @@ const bcrypt = require('bcryptjs');
 // Load User model
 const User = require('../user/schema.ts');
 
-var auth = function(passport) {
+var auth = function(passport:any) {
   passport.use(
-    new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
+    new LocalStrategy({ usernameField: 'email' }, (email:string, password:string, done:any) => {
       // Match user
       User.findOne({
         email: email
-      }).then(user => {
+      }).then((user:any) => {
         if (!user) {
           return done(null, false);
         }
 
         // Match password
-        bcrypt.compare(password, user.password, (err, isMatch) => {
+        bcrypt.compare(password, user.password, (err:any, isMatch:any) => {
           if (err) throw err;
           if (isMatch) {
             return done(null, user);
@@ -28,12 +28,12 @@ var auth = function(passport) {
     })
   );
 
-  passport.serializeUser((user, done)=> {
+  passport.serializeUser((user:any, done:any)=> {
     done(null, user.id);
   });
 
-  passport.deserializeUser((id, done)=> {
-    User.findById(id, function(err, user) {
+  passport.deserializeUser((id:any, done:any)=> {
+    User.findById(id, function(err:any, user:any) {
       done(err, user);
     });
   });
