@@ -1,5 +1,4 @@
-
-   var isAuth=function(req:any,res:any,next:any){
+const isAuth=function(req:any,res:any,next:any){
         if(req.isAuthenticated()){
             return next();
         }

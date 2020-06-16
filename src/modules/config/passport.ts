@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 // Load User model
 const User = require('../user/schema.ts');
 
-var auth = function(passport:any) {
+const auth = function(passport:any) {
   passport.use(
     new LocalStrategy({ usernameField: 'email' }, (email:string, password:string, done:any) => {
       // Match user
