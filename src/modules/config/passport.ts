@@ -9,22 +9,21 @@ const auth = function(passport:any) {
     new LocalStrategy({ usernameField: 'email' }, (email:string, password:string, done:any) => {
       // Match user
       User.findOne({
-        email: email
+        email
       }).then( (user:any) => {
         if (!user) {
           return done(null, false);
         }
-       else {
-          // Match password
+        // Match password
         bcrypt.compare(password, user.password, (err:any, isMatch:any) => {
-        if (err) throw err;
-        if (isMatch) {
-          return done(null, user);
-        } else {
-          return done(null, false);
-        }
-      });
-      }
+          if (err) throw err;
+          if (isMatch) {
+            return done(null, user);
+          } 
+            return done(null, false)
+            
+        });
+          return 0 ;
       });
     })
   );

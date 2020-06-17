@@ -1,8 +1,8 @@
 import express from 'express'
 
+import passport from 'passport'
 import Controller from './controllers'
 
-import passport from 'passport'
 
 
 
@@ -35,7 +35,7 @@ router.post('/register', Controller.registerUser)
 
 /** Export router to be included into main application */
 
- //Login handle
+ // Login handle
 
 router.get('/login',  (req, res) => {
     res.render('login.ejs')
@@ -48,7 +48,7 @@ router.get('/login',  (req, res) => {
        })(req,res,next);
    })
   
-   //Logout handle
+   // Logout handle
   router.get('/logout',(req,res)=>{
     req.logout();
     res.redirect('/login');
