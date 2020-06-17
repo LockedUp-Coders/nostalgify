@@ -4,7 +4,7 @@ import Controller from './controllers'
 
 import passport from 'passport'
 
-import bcrypt from 'bcryptjs'
+
 
 /** Create a new router instance */
 const router = express.Router()
