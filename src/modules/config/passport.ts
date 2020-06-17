@@ -10,7 +10,7 @@ const auth = function(passport:any) {
       // Match user
       User.findOne({
         email: email
-      }).then((user:any) => {
+      }).then( function ensure(user:any) {
         if (!user) {
           return done(null, false);
         }
