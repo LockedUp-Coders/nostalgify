@@ -1,6 +1,10 @@
 import express from 'express'
 
+import passport from 'passport'
 import Controller from './controllers'
+
+
+
 
 /** Create a new router instance */
 const router = express.Router()
@@ -30,4 +34,24 @@ router.post('/profile', Controller.updateProfile)
 router.post('/register', Controller.registerUser)
 
 /** Export router to be included into main application */
+
+ // Login handle
+
+router.get('/login',  (req, res) => {
+    res.render('login.ejs')
+  })
+
+ router.post('/login',(req,res,next)=>{
+    passport.authenticate('local',{
+        successRedirect:'/userprofile',
+        failureRedirect:'/login'
+       })(req,res,next);
+   })
+  
+   // Logout handle
+  router.get('/logout',(req,res)=>{
+    req.logout();
+    res.redirect('/login');
+  })
+  
 export default router
