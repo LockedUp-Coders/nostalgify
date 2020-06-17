@@ -10,20 +10,21 @@ const auth = function(passport:any) {
       // Match user
       User.findOne({
         email: email
-      }).then( function ensure(user:any) {
+      }).then( (user:any) => {
         if (!user) {
           return done(null, false);
         }
-
-        // Match password
+       else {
+          // Match password
         bcrypt.compare(password, user.password, (err:any, isMatch:any) => {
-          if (err) throw err;
-          if (isMatch) {
-            return done(null, user);
-          } else {
-            return done(null, false);
-          }
-        });
+        if (err) throw err;
+        if (isMatch) {
+          return done(null, user);
+        } else {
+          return done(null, false);
+        }
+      });
+      }
       });
     })
   );
