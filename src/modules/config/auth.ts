@@ -3,6 +3,7 @@ const isAuth=function(req:any,res:any,next:any){
             return next();
         }
         res.redirect('/login')
+        return next();
     }
 
  export default isAuth   
