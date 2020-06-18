@@ -7,6 +7,7 @@ node_js:
   - 10
 
 install:
+  - npm install
   - npm install typescript
 
 script:
@@ -16,5 +17,6 @@ script:
   - npm run codecov
 
 after_success:
-  - npm i -g surge
-  - surge --project ./coverage/lcov-report --domain ykv-template-cov.surge.sh
+  - echo "DONE !"
+#   - npm i -g surge
+#   - surge --project ./coverage/lcov-report --domain ykv-nostalgify-cov.surge.sh

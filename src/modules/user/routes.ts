@@ -1,31 +1,57 @@
-import express, { Response } from 'express'
+import express from 'express'
 
-import UserOperations from './controller'
+import passport from 'passport'
+import Controller from './controllers'
 
-import { ControllerResponse } from './interface'
 
+
+
+/** Create a new router instance */
 const router = express.Router()
 
-router.post('/create', async ({ body }, res: Response) => {
-  const response = (await UserOperations.createNewUser(
-    body,
-  )) as ControllerResponse
+/**
+ * All controllers are mapped to routes here .Here we attach controllers to routes.
+ * Just like we attach all requests made to /user to userModules, now we go one step
+ * further to make Controller.showProfile handle all get requests made to /user/
+ */
 
-  res.status(response.code).json({
-    error: response.error,
-    message: response.message,
-    payload: response.payload,
+/**
+ * @description This is how we map all requests made to view a user profile. Notice that how we
+ * are a watching for a get request on /user/profile
+ */
+router.get('/profile', Controller.showProfile)
+
+/**
+ * @description This is how we map all requests made to update a user profile. Notice that how we
+ * are watching for a post request on /user/profile which would contain the new data
+ * to update profile
+ */
+router.post('/profile', Controller.updateProfile)
+
+/**
+ * @description This is how we register a user to our system
+ */
+router.post('/register', Controller.registerUser)
+
+/** Export router to be included into main application */
+
+ // Login handle
+
+router.get('/login',  (req, res) => {
+    res.render('login.ejs')
   })
-})
 
-router.post('/login', async ({ body }, res: Response) => {
-  const response = (await UserOperations.login(body)) as ControllerResponse
-
-  res.status(response.code).json({
-    error: response.error,
-    message: response.message,
-    payload: response.payload,
+ router.post('/login',(req,res,next)=>{
+    passport.authenticate('local',{
+        successRedirect:'/userprofile',
+        failureRedirect:'/login'
+       })(req,res,next);
+   })
+  
+   // Logout handle
+  router.get('/logout',(req,res)=>{
+    req.logout();
+    res.redirect('/login');
   })
-})
-
+  
 export default router
