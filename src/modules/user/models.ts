@@ -75,6 +75,32 @@ class UserModel {
       })
     })
   }
+
+
+  static async updateProfile(user: UserDetails):Promise<UserDetails> {
+    return new Promise((resolve, reject) => {
+      User.updateOne(
+         {username: user.username},
+         {
+           firstname: user.firstname,
+           lastname: user.lastname,
+           password: bcrypt.hashSync(user.password, 10),
+           teams: user.teams
+          }
+        )
+      .exec()
+      .then((result) => {
+        logger.info(`User ${user.username} details updated`);
+        resolve(result)
+      })
+      .catch(err => {
+        reject({
+          err: true,
+          message: err
+        })
+      })
+    })
+  }
 }
 
 export default UserModel

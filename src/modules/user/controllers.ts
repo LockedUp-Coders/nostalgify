@@ -31,10 +31,12 @@ class UserOperations {
    * @returns null
    */
   static async updateProfile(request: Request, response: Response) {
+    const data = await models.updateProfile(request.body)
     try {
-      response.json({ url: request.url })
+      response.json(data)
     } catch (err) {
       logger.error(err)
+      response.json(err)
     }
   }
 
@@ -49,7 +51,7 @@ class UserOperations {
   static async registerUser(request: Request, response: Response) {
     try {
       const data = await models.registerUser(request.body)
-      response.json(data)
+      response.status(200).json(data)
     } catch (err) {
       logger.error(err)
       response.json(err)
