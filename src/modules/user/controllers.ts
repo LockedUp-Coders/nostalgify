@@ -31,8 +31,8 @@ class UserOperations {
    * @returns null
    */
   static async updateProfile(request: Request, response: Response) {
-    const data = await models.updateProfile(request.body)
     try {
+      const data = await models.updateProfile(request.body)
       response.json(data)
     } catch (err) {
       logger.error(err)

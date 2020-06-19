@@ -79,6 +79,13 @@ class UserModel {
 
   static async updateProfile(user: UserDetails):Promise<UserDetails> {
     return new Promise((resolve, reject) => {
+      if(!user.username || !user.firstname || !user.password || !user.lastname || !user.teams)
+      {
+        reject({
+          error: true,
+          message: "Update Request details not valid."
+        })
+      }
       User.updateOne(
          {username: user.username},
          {
