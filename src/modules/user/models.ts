@@ -75,6 +75,39 @@ class UserModel {
       })
     })
   }
+
+
+  static async updateProfile(user: UserDetails):Promise<UserDetails> {
+    return new Promise((resolve, reject) => {
+      if(!user.username || !user.firstname || !user.password || !user.lastname || !user.teams)
+      {
+        reject({
+          error: true,
+          message: "Update Request details not valid."
+        })
+      }
+      User.updateOne(
+         {username: user.username},
+         {
+           firstname: user.firstname,
+           lastname: user.lastname,
+           password: bcrypt.hashSync(user.password, 10),
+           teams: user.teams
+          }
+        )
+      .exec()
+      .then((result) => {
+        logger.info(`User ${user.username} details updated`);
+        resolve(result)
+      })
+      .catch(err => {
+        reject({
+          err: true,
+          message: err
+        })
+      })
+    })
+  }
 }
 
 export default UserModel
