@@ -1,22 +1,23 @@
 
-import org from '../models/org'
+// import org from '../organization/schema'
 
-const OrgOwnership = function(req:any,res:any,next:any){
-    if(req.isAuthenticated()){
-        org.findOne(req.params.orgusername,function(err,Organisation){
-            if(err){
-                res.redirect('back')
-            }else if(Organisation.owner.id.equals(req.user._id) ){
-                    next();
-                }else{
-                    res.redirect('back')
-                }
-        });
+// const OrgOwnership = function(req:any,res:any,next:any){
+//     if(req.isAuthenticated()){
+//         org.findOne({'name':req.params.orgusername},function(err,organisation){
+//             if(err){
+//                 res.redirect('back')
+//             }else if(organisation.admin.id.equals(req.user._id) ){
+//                     next();
+//                 }else{
+//                     res.redirect('back')
+                    
+//                 }
+//         });
 
-    }else{
-        res.redirect('back')
-    }
-}
+//     }else{
+//         res.redirect('back')
+//     }
+// }
 
 
-export default OrgOwnership
+// export default OrgOwnership
