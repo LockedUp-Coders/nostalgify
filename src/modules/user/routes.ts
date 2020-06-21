@@ -2,8 +2,7 @@ import express from 'express'
 
 import passport from 'passport'
 import Controller from './controllers'
-import OrgOwnership from '../middleware/owner'
-import org from '../models/org'
+
 
 
 
@@ -55,16 +54,6 @@ router.get('/login',  (req, res) => {
     res.redirect('/login');
   })
   
-  // Delete organisation
-  router.delete('/:orgusername',OrgOwnership,(req:any,res:any)=>{
-    org.deleteOne({orgusername:req.params.orgusername},(err:any)=>{
-      if(err){
-        res.redirect('/home');
-      }else{
-        res.redirect('/home');
-      }
-    })
-  })
 
 
 export default router

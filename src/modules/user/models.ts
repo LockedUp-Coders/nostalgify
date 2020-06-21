@@ -47,7 +47,7 @@ class UserModel {
   static async registerUser(user: UserDetails): Promise<UserDetails> {
     return new Promise((resolve, reject) => {
       /** if something goes wrong, send data with reject({ .... }) */
-      /**   if everything is alright, send data with resolve */
+      /** if everything is alright, send data with resolve */
 
       if( !user || !user.username || !user.firstname || !user.password )
       {
