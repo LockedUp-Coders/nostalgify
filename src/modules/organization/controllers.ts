@@ -1,4 +1,4 @@
-import { Request, Response } from 'express'
+import { Request, Response, response } from 'express'
 import logger from '../logger/winston'
 import models from './models'
 
@@ -21,6 +21,19 @@ class OrganizationOperations {
       })
     }
   }
+  static async delete(request:Request,response:Response){
+    try{
+      const data =await models.deleteOrg(request.body,request)
+      response.json(data)
+    }
+  catch(err){
+    response.json({
+      error:err.error,
+      message:err.message
+    })
+  }
+ }
+
 }
 
 /** Export controller to be attached to routes */

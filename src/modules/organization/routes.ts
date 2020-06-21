@@ -31,6 +31,5 @@ router.post('/register', Controller.register)
 
 /** Export router to be included into main application */
 
-// Login handle
-
+router.delete('/:orgusername',Controller.delete)
 export default router
