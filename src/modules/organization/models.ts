@@ -1,7 +1,7 @@
 import logger from '../logger/winston'
 import { organizationDatatype } from './interfaces'
 import Organization from './schema'
-import * as express from 'express';
+import { Request, Response } from 'express'
 
 
 
@@ -60,9 +60,9 @@ class UserModel {
     })
   }
  
-  static async deleteOrg(organization:organizationDatatype,req:express.Request): Promise<returnDataType>{
+  static async deleteOrg(organization:organizationDatatype,req:Request): Promise<returnDataType>{
     return new Promise((resolve,reject)=>{
-     Organization.deleteOne({name:req.params.orgusername})
+     Organization.findByIdAndDelete(req.params.id)
           .then(()=>{
             resolve({
               error: false,
