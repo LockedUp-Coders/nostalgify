@@ -13,6 +13,7 @@ import database from './modules/database/connect'
  * Importing all modules to application
  */
 import userModule from './modules/user/routes'
+import orgModule from './modules/organization/routes'
 
 /** Load environment variable simulations */
 require('dotenv').config()
@@ -32,19 +33,17 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(session(sessionConfigurations))
 app.use(passport.initialize())
 app.use(passport.session())
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs')
 database.connect()
 
 /**
  * Attach all modules here
  */
 app.use('/user', userModule)
-
-// temporary - To be deleted in future. Just for demo purpose.
-app.get('/welcome', (req,res)=> res.render('home',{name:"user123"}));
+app.use('/org', orgModule)
 
 /** Handle 404  */
-app.get('*', (req, res) => res.send('404'))
+app.get('*', (req, res) => res.send('Not found : 404'))
 
 // pass instance
 export default app

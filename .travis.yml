@@ -11,7 +11,6 @@ install:
   - npm install typescript
 
 script:
-  - npm run lint
   - npm run build
   - npm run coverage
   - npm run codecov
