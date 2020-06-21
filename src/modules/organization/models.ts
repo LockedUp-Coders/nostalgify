@@ -1,6 +1,9 @@
 import logger from '../logger/winston'
 import { organizationDatatype } from './interfaces'
 import Organization from './schema'
+import { Request, Response } from 'express'
+
+
 
 interface returnDataType {
   error: Boolean
@@ -56,6 +59,29 @@ class UserModel {
         })
     })
   }
+ 
+  static async deleteOrg(organization:organizationDatatype,req:Request): Promise<returnDataType>{
+    return new Promise((resolve,reject)=>{
+     Organization.findByIdAndDelete(req.params.id)
+          .then(()=>{
+            resolve({
+              error: false,
+              message:'deleted succesfully',
+              payload: 'Org deleted'
+            })
+          })
+          .catch((err)=>{
+            reject({
+              error:true,
+              message:err
+            })
+          })
+    })
+
+  }
+
+
+
 }
 
 export default UserModel
