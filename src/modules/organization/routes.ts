@@ -29,7 +29,10 @@ const router = express.Router()
  */
 router.post('/register', Controller.register)
 
+router.delete('/:id',Controller.delete)
+
+router.put('/:id',Controller.update)
 /** Export router to be included into main application */
 
-router.delete('/:id',Controller.delete)
+
 export default router
