@@ -79,6 +79,25 @@ class UserModel {
     })
 
   }
+  static async updateOrg(organization:organizationDatatype,req:Request): Promise<returnDataType>{
+    return new Promise((resolve,reject)=>{
+     Organization.findByIdAndUpdate(req.params.id,req.body.Organization)
+          .then(()=>{
+            resolve({
+              error: false,
+              message:'updated succesfully',
+              payload: 'Org updated'
+            })
+          })
+          .catch((err)=>{
+            reject({
+              error:true,
+              message:err
+            })
+          })
+    })
+
+  }
 
 
 
